@@ -1,8 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-
-# ✅ Use valid model
 model_name = "microsoft/biogpt"
 
 @st.cache_resource
@@ -13,7 +11,7 @@ def load_model():
 
 tokenizer, model = load_model()
 
-st.title("🩺 AI Medical Chatbot")
+st.title("AI Medical Chatbot")
 
 user_input = st.text_input("Enter your symptoms:")
 
@@ -30,7 +28,7 @@ if st.button("Ask") and user_input:
 
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    st.write("### 🤖 Response:")
+    st.write("Response:")
     st.write(response)
 
     st.warning("This is not medical advice. Consult a doctor.")
